@@ -22,6 +22,8 @@ public class ExpenseActivity extends Activity {
     private EditText priceEditText;
     private Spinner categorySpinner;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,14 @@ public class ExpenseActivity extends Activity {
         categorySpinner = (Spinner) findViewById(R.id.expanse_category);
 
         categorySpinner.setAdapter(new CategoryAdapter());
-        loadLastCategory(categorySpinner);
 
+        if (shouldCareAboutLastCategory()) {
+            loadLastCategory(categorySpinner);
+        }
+
+        loadDefaultValues();
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
     }
 
@@ -61,8 +69,21 @@ public class ExpenseActivity extends Activity {
             int id = ExpenseCategory.getId(lastCategoryName);
             categorySpinner.setSelection(id);
         }
+    }
 
+    private boolean shouldCareAboutLastCategory() {
+        return sharedPreferences.getBoolean("pref_save_category", false);
+    }
 
+    private void loadDefaultValues() {
+        boolean defaultValues = sharedPreferences.getBoolean("pref_default_values", false);
+        if (defaultValues) {
+            String defaultName = sharedPreferences.getString("pref_default_name", "");
+            String defaultPrice = sharedPreferences.getString("pref_default_price", "9.99");
+
+            titleEditText.setText(defaultName);
+            priceEditText.setText(defaultPrice);
+        }
     }
 
     @Override

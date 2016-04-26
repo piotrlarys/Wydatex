@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".expense.ExpenseActivity" />
-
+        <activity android:name=".preferences.PreferencesActivity"></activity>
     </application>
 
 </manifest>

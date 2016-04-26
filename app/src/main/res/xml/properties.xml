@@ -2,36 +2,36 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <CheckBoxPreference
+        android:defaultValue="false"
         android:key="pref_save_category"
         android:summaryOff="Nie będzie zapisywana"
         android:summaryOn="Będzie zapisywana"
-        android:title="Ostatnia kategoria"
-        android:defaultValue="false" />
+        android:title="Ostatnia kategoria" />
 
     <SwitchPreference
-        android:title="Domyślne wartości"
+        android:key="pref_default_values"
         android:summary="Domyślne wartości"
-        android:key="pref_default_values" />
+        android:title="Domyślne wartości" />
 
     <EditTextPreference
+        android:dependency="pref_default_values"
         android:dialogTitle="Domyślna nazwa"
         android:key="pref_default_name"
-        android:dependency="pref_default_values"
         android:negativeButtonText="Anuluj"
         android:positiveButtonText="OK"
-        android:title="Nazwa"
-        android:summary="Domyślna nazwa wydatku" />
+        android:summary="Domyślna nazwa wydatku"
+        android:title="Nazwa" />
 
     <EditTextPreference
-        android:dialogTitle="Domyślna cena"
-        android:key="pref_default_price"
-        android:inputType="numberDecimal"
+        android:defaultValue="9.99"
         android:dependency="pref_default_values"
+        android:dialogTitle="Domyślna cena"
+        android:inputType="numberDecimal"
+        android:key="pref_default_price"
         android:negativeButtonText="Anuluj"
         android:positiveButtonText="OK"
-        android:title="Cena"
-        android:defaultValue="9.99"
-        android:summary="Domyślna cena wydatku" />
+        android:summary="Domyślna cena wydatku"
+        android:title="Cena" />
 
 
 </PreferenceScreen>
