@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import info.larys.wydatex.R;
+import info.larys.wydatex.dao.Expense;
 
 public class ExpenseActivity extends Activity {
 
@@ -50,7 +51,7 @@ public class ExpenseActivity extends Activity {
         double price = Double.parseDouble(priceEditText.getText().toString());
         ExpenseCategory category = (ExpenseCategory) categorySpinner.getSelectedItem();
         Expense expense = new Expense(title, price, category);
-        ExpenseDatabase.addExpanse(expense);
+        ExpenseRepository.addExpanse(expense);
         saveLastCategory(category);
         finish();
     }

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import info.larys.wydatex.R;
+import info.larys.wydatex.dao.Expense;
 
 public class ExepenseListActivity extends AppCompatActivity {
 
@@ -44,12 +45,12 @@ public class ExepenseListActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return ExpenseDatabase.getExpenses().size();
+            return ExpenseRepository.getExpenses().size();
         }
 
         @Override
         public Object getItem(int i) {
-            return ExpenseDatabase.getExpenses().get(i);
+            return ExpenseRepository.getExpenses().get(i);
         }
 
         @Override
